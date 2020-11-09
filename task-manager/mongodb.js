@@ -4,7 +4,7 @@
 // const MongoClient = mongodb.MongoClient;
 // const ObjectID = mongodb.ObjectID;
 
-const {MongoClient, ObjectID, ObjectId} = require('mongodb') //this is a short way of grabbing the above consts. "destructuring"
+const {MongoClient, ObjectID} = require('mongodb') //this is a short way of grabbing the above consts. "destructuring"
 
 const connectionURL = 'mongodb://127.0.0.1:27017'
 const databaseName = 'task-manager'
@@ -17,39 +17,5 @@ MongoClient.connect(connectionURL, { useNewUrlParser: true, useUnifiedTopology: 
     }
 
     const db = client.db(databaseName)
-
-    db.collection('tasks').deleteMany({
-        description: "Clean the house"
-    }).then((result) => {
-        console.log(result)
-    }).catch((error) => {
-        console.log(error)
-    })
-
-
-    // const updatePromise = db.collection('users').updateOne({
-    //     _id: new ObjectID("5fa583a527168f5b12bdf7ca")
-    // }, {
-    //     $inc: {
-    //         age: 1
-    //     }
-    // })
-
-    // updatePromise.then((result) => {
-    //     console.log(result);
-    // }).catch((error) => {
-    //     console.log(error)
-    // })
-
-    // db.collection('tasks').updateMany({
-    //     completed:true
-    // }, {
-    //     $set: {
-    //         completed: false
-    //     }
-    // }).then((result) => {
-    //     console.log(result.modifiedCount)
-    // }).catch((error) => {
-    //     console.log('Error', error)
-    // })
+    
 })
