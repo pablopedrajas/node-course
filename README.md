@@ -4,3 +4,5 @@ command for connecting mongo:
 
 npm i mongoose validator 
     validator is a library for emails, tel. numbers, social security, etc. Read the docs
+
+install postman
