@@ -1,24 +1,17 @@
-const request = require('request');
-const geocode = require('./geocode');
-
-//weather stack
-//Temperature, weather description, prediction
+const request = require('request')
 
 const forecast = (latitude, longitude, callback) => {
-    const url = 'http://api.weatherstack.com/current?access_key=79d3e13cd80c31769ff658f9e93e8f76&query=' + latitude + ',' + longitude + '&units=m';
+    const url = 'https://api.darksky.net/forecast/9d1465c6f3bb7a6c71944bdd8548d026/' + latitude + ',' + longitude
 
-    request({ url, json: true}, (error, {body}) => {
-        if(error) {
-            callback('Unable to connect to weather services.', undefined)
-        } else if(body.error) {
-            callback('Unable to find location. Try another one.', undefined)
+    request({ url, json: true }, (error, { body }) => {
+        if (error) {
+            callback('Unable to connect to weather service!', undefined)
+        } else if (body.error) {
+            callback('Unable to find location', undefined)
         } else {
-            callback(undefined, {
-                temperature: body.current.temperature
-            })
-        }    
-    });
+            callback(undefined, body.daily.data[0].summary + ' It is currently ' + body.currently.temperature + ' degress out. There is a ' + body.currently.precipProbability + '% chance of rain.')
+        }
+    })
 }
 
-
-module.exports = forecast;
+module.exports = forecast
