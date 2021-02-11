@@ -8,3 +8,5 @@ npm i mongoose validator
 install postman
 
 to run nodemon --> npm run dev (we wont see it in the browser, but yes in postman because we haven't configured yet the express app)
+
+npm install sharp
